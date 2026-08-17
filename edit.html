@@ -254,9 +254,10 @@ body{background:var(--bg);min-height:100vh}
   <span class="tm-pill">DRAFT v1 · EDITABLE</span>
   <span class="tm-status" id="tm-status">Loading…</span>
   <button id="tm-reset">Reset</button>
-  <button id="tm-print">Print / PDF</button>
-  <button id="tm-export" class="tm-primary">Export Final Version</button>
-  <div class="tm-note">Edits save automatically to the cloud. When you're done, click <b>Export Final Version</b> and send the downloaded file back — that's the locked final.</div>
+  <button id="tm-pdf">Download PDF</button>
+  <button id="tm-export">Export Final Version</button>
+  <button id="tm-publish" class="tm-primary">Publish To Live Site</button>
+  <div class="tm-note">Edits save automatically as you type. When the page is ready, click <b>Publish To Live Site</b> and the main link updates straight away. <b>Export Final Version</b> downloads a locked copy if you want the file. <b>Download PDF</b> exports the deck exactly as you see it — choose "Save as PDF" as the destination.</div>
 </div>
 
 <style id="tm-edit-css">
@@ -270,13 +271,24 @@ body{background:var(--bg);min-height:100vh}
 #tm-bar .tm-status.saved{color:#7BC99A}
 #tm-bar .tm-status.warn{color:#E8C060}
 #tm-bar .tm-note{width:100%;color:#8f8f8f;font-size:11px;line-height:1.5}
-#tm-bar button{background:transparent;border:1px solid #3d3d3d;color:#e6e6e6;font-family:inherit;
+#tm-bar button,#tm-bar .tm-btn{background:transparent;border:1px solid #3d3d3d;color:#e6e6e6;font-family:inherit;
   font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:7px 14px;border-radius:4px;
   cursor:pointer;transition:background 0.15s,border-color 0.15s}
-#tm-bar button:hover{border-color:#E85A0C;color:#fff}
+#tm-bar button:hover,#tm-bar .tm-btn:hover{border-color:#E85A0C;color:#fff}
+#tm-bar .tm-btn{text-decoration:none;display:inline-block;line-height:1.35}
 #tm-bar button.tm-primary{background:#E85A0C;border-color:#E85A0C;color:#fff;font-weight:600}
 #tm-bar button.tm-primary:hover{background:#c94d08}
-@media print{#tm-bar{display:none!important}}
+@media print{
+  #tm-bar{display:none!important}
+  /* Chrome's print dialog defaults "Background graphics" OFF, which strips a
+     charcoal deck to white slides. This overrides the checkbox so the export
+     is correct no matter what the reviewer's dialog is set to. */
+  .slide{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  /* Editing affordances must never reach the PDF. */
+  .tm-edit{outline:none!important;background:transparent!important}
+  .tm-chip{display:none!important}
+  .idea-card.tm-idea{border:inherit!important;background:inherit!important}
+}
 .tm-edit{cursor:text;border-radius:2px;outline:1px dashed transparent;outline-offset:3px;
   transition:outline-color 0.12s,background 0.12s}
 .tm-edit:hover{outline-color:rgba(232,90,12,0.35)}
@@ -821,11 +833,11 @@ window.addEventListener("load", function(){
   }
 
   function save(){
-    if(!wrap) return;
+    if(!wrap) return Promise.resolve();
     var html = wrap.innerHTML;
     try { localStorage.setItem(LOCAL_KEY, html); } catch(e){}
     setStatus('Saving…');
-    saveDraft(html).then(function(){
+    return saveDraft(html).then(function(){
       setStatus('Saved to cloud just now', 'saved');
     }).catch(function(){
       setStatus('Cloud offline — kept in this browser only', 'warn');
@@ -888,7 +900,20 @@ window.addEventListener("load", function(){
     location.reload();
   });
 
-  document.getElementById('tm-print').addEventListener('click', function(){ window.print(); });
+  // Print the CURRENT DOM, so unsaved edits are in the PDF too. The page's
+  // own print CSS handles page size, margins, the toolbar and (via
+  // print-color-adjust:exact) the backgrounds Chrome would otherwise drop.
+  var pdfBtn = document.getElementById('tm-pdf');
+  if(pdfBtn){
+    pdfBtn.addEventListener('click', function(){
+      // Flush any pending debounce first so the cloud copy matches the PDF.
+      clearTimeout(saveTimer);
+      Promise.resolve(save()).then(function(){
+        setStatus('Choose "Save as PDF" as the destination', 'saved');
+        window.print();
+      });
+    });
+  }
 
   function exportFinal(){
     var clone = document.documentElement.cloneNode(true);
@@ -919,6 +944,63 @@ window.addEventListener("load", function(){
     try { exportFinal(); setStatus('Final exported — check your downloads', 'saved'); }
     catch(e){ setStatus('Export failed: ' + e.message, 'warn'); }
   });
+
+  
+  var BANNED = ["delve into", "embark", "spearhead", "harness", "unleash", "supercharge", "trailblazing", "game-changer", "game changer", "innovative", "meticulous", "invaluable", "ingenious", "pivotal", "comprehensive", "robust", "transformative", "empower", "seamless", "synergy", "proactive", "disruptive", "visionary", "optimize", "leverage", "navigating the landscape", "tapestry", "realm", "ecosystem", "in conclusion", "in summary", "it is worth noting", "it's important to note", "a testament to", "revolutionize", "paint a picture", "dive deep into", "woven into the fabric", "end-to-end", "end to end", "fully integrated", "best-in-class", "world-class", "cutting-edge", "state-of-the-art", "at the end of the day", "in today's world", "going forward"];
+
+  function scanIssues(){
+    var raw = wrap.innerText || wrap.textContent || '';
+    var text = raw.toLowerCase();
+    var hits = [];
+    BANNED.forEach(function(term){
+      var i = text.indexOf(term);
+      if(i === -1) return;
+      hits.push({
+        term: term,
+        near: raw.slice(Math.max(0, i - 45), i + term.length + 45).replace(/\s+/g, ' ').trim()
+      });
+    });
+    if(/[\u2014\u2013]/.test(raw)) hits.push({term: 'em/en dash', near: ''});
+    return hits;
+  }
+
+  function publishLive(){
+    var issues = scanIssues();
+    var version = Date.now().toString(36);
+    var at = new Date().toISOString();
+    setStatus('Publishing to the live site\u2026');
+    return fetch(DB_URL + '/published/' + DOC_KEY + '.json', {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({html: wrap.innerHTML, version: version, at: at})
+    }).then(function(r){
+      if(!r.ok) throw new Error('http ' + r.status);
+      fetch(DB_URL + '/publishlog/' + DOC_KEY + '/' + version + '.json', {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({at: at, issues: issues})
+      }).catch(function(){});
+      var msg = 'Published \u2014 the live page is updated';
+      if(issues.length){
+        msg += ' (' + issues.length + ' wording note' +
+               (issues.length > 1 ? 's' : '') + ' logged for Evan)';
+      }
+      setStatus(msg, 'saved');
+    }).catch(function(e){
+      setStatus('Publish failed: ' + e.message +
+                ' \u2014 the live page did NOT change', 'warn');
+    });
+  }
+
+  document.getElementById('tm-publish').addEventListener('click', function(){
+    if(!confirm('Publish your edits to the live page?\n\nThis updates the page at the main link straight away.')) return;
+    // Flush the pending draft save FIRST, then publish. Running both at once
+    // lets the save's "Saved to cloud" message land after the publish result
+    // and overwrite it, so the click looks like it did nothing.
+    clearTimeout(saveTimer);
+    save().then(publishLive);
+  });
+
 })();
 
 </script>
