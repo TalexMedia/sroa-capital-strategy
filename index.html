@@ -246,6 +246,46 @@ body{background:var(--bg);min-height:100vh}
   body{background:#fff}
   .topbar-cta,.cta-primary{display:none}
 }
+
+/* ── proof-led concept cards ────────────────────────────────────── */
+.scale-label{display:block;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;color:var(--o);margin-bottom:6px}
+.prec{margin-top:0.85rem;padding:0.95rem 1rem 0.85rem;border:1px solid var(--border);
+  border-radius:8px;background:var(--bg)}
+.prec-label{font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--txt3);margin-bottom:0.7rem}
+.prec-spec{margin:0 0 0.9rem;display:grid;grid-template-columns:auto 1fr;gap:0.35rem 0.9rem}
+.prec-spec dt{font-family:'Oswald',sans-serif;font-size:10.5px;font-weight:500;letter-spacing:0.07em;
+  text-transform:uppercase;color:var(--txt3);white-space:nowrap;padding-top:2px}
+.prec-spec dd{margin:0;font-size:13px;color:var(--txt2);line-height:1.6}
+.proj-video-embed{position:relative;width:100%;aspect-ratio:16/9;background:#141414;
+  border-radius:8px;overflow:hidden;margin-bottom:0.85rem}
+.proj-video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:block}
+.video-facade{cursor:pointer}
+.vf-thumb{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
+.vf-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:40px;
+  border-radius:9px;background:rgba(20,20,20,0.82);display:block}
+.vf-play:after{content:"";position:absolute;top:50%;left:52%;transform:translate(-50%,-50%);
+  border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent #fff}
+.video-facade:hover .vf-play{background:var(--o)}
+.vf-title{position:absolute;left:0;right:0;bottom:0;padding:0.5rem 0.7rem;font-size:11px;
+  font-family:'Oswald',sans-serif;letter-spacing:0.05em;text-transform:uppercase;color:#fff;
+  background:linear-gradient(to top,rgba(0,0,0,0.78),rgba(0,0,0,0))}
+.stat-strip-sm{margin:0 0 0.75rem!important}
+.stat-strip-sm .stat-num{font-size:26px}
+.stat-strip-sm .stat-cell{padding:0.65rem 0.5rem}
+.prec-note{margin:0;font-size:12px;color:var(--txt3);line-height:1.65}
+.prec-note a{color:var(--o);text-decoration:none;border-bottom:1px solid rgba(232,90,12,0.35)}
+.apply{margin-top:1rem;padding-left:0.95rem;border-left:2px solid var(--o)}
+.apply-label{font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--o);margin-bottom:0.42rem}
+.apply p{margin:0 0 0.45rem;font-size:13.5px;color:var(--txt2);line-height:1.7}
+.apply p:last-child{margin-bottom:0}
+.apply-names{font-size:12.5px!important;color:var(--txt3)!important}
+.apply-names strong{color:var(--txt);font-weight:500}
+@media(max-width:640px){.prec-spec{grid-template-columns:1fr;gap:0.15rem}
+  .prec-spec dt{padding-top:6px}}
+
 </style>
 </head>
 <body>
@@ -341,7 +381,7 @@ body{background:var(--bg);min-height:100vh}
     <p>Melissa, I'm Tom Langan. I spent time in what SROA has put into the world, from sroacapital.com to sroa.com, the YouTube channel and the LinkedIn page, and wanted to send a short note from a production shop to the person who just took over digital at a company that owns and operates more than 700 self-storage properties.</p>
     <p>I've spent 25 years in video and television production as a Director of Photography, Producer, and Showrunner, earning two Emmy nominations and leading multi-million dollar productions for global broadcasters like the BBC, NBCUniversal, and Discovery filming all over the world from the Arctic Circle to sub-Saharan Africa.</p>
     <p><strong>My job was, and still is, to make video that people actually want to watch.</strong></p>
-    <p>In order to do this (create audience first content that leaves people feeling good about supporting your brand and your mission) we need to always take your broader public footprint into account. What follows here is our honest take on what we saw, and where we'd start if we were working together. SROA Capital is the expert in buying, building and running self storage. Talex would just add the video that shows renters and investors the people doing that work.</p>
+    <p>In order to do this (create audience first content that leaves people feeling good about supporting your brand and your mission) we need to always take your broader public footprint into account. What follows here is our honest take on what we saw, and where we'd start if we were working together.</p>
   </div>
 
   <div class="whats-inside">
@@ -458,7 +498,7 @@ body{background:var(--bg);min-height:100vh}
       <span class="section-eyebrow">Three Concepts For SROA Capital</span>
     </div>
     <h2 class="section-title">Three Opportunities to Grow Your Audience</h2>
-    <p class="section-subtitle">One flagship documentary series, one short scripted comedy, and one single brand film. We film and produce at every level, so where you start is up to you.</p>
+    <p class="section-subtitle">One flagship documentary series, one shorter format, and one single film. Each one names the format, the show it borrows from, and a company that has already made it work. We film and produce at every level, so where you start is up to you.</p>
   </div>
 
   <div class="ideas-grid">
@@ -466,9 +506,10 @@ body{background:var(--bg);min-height:100vh}
     <div class="idea-card idea-card-featured">
       <div class="idea-num">01</div>
       <div class="idea-body">
-        <div style="display:block;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--o);margin-bottom:6px">Long-Form Episodic · Flagship, ongoing</div>
-        <div class="idea-title">"Make Room"</div>
-        <div class="idea-desc">A candle maker signs for the unit her business now runs out of, because her garage stopped being big enough last spring. A couple fits twenty-six years of a four-bedroom house into a ten-by-ten, headed for a smaller place near the grandkids. A daughter folds her mother's winter coats into boxes three weeks after the funeral, with the house selling on Friday and no decision yet about what stays. Each of these people rented a unit at the exact moment their life was changing.<br/><br/><em>Make Room</em> is a documentary series that tells the story of one Storage Rentals of America renter per episode. The episodes are drawn from your properties across 31 states. The renter tells their story in their own words, and the store manager who knows them acts as the audience's guide.<br/><br/>Think about <em>Tidying Up with Marie Kondo (the Netflix series where a family sorts through everything they own at a turning point in their life, with a guide beside them)</em>. That show made people watch a stranger hold up one object and decide whether it stays. <em>Make Room</em> is built on that same decision, made at the door of a storage unit. The series puts you in the story as the company that held on to a renter's belongings while everything else changed. Your renters have already written more than 22,000 five-star reviews, and this series turns those written reviews into stories people can watch, one renter at a time.</div>
+        <div class="scale-label">Long-Form Episodic &middot; Flagship, ongoing</div>
+        <div class="idea-title">A returning documentary series</div>
+        <div class="prec"><div class="prec-label">The format, and a company that has already run it</div><dl class="prec-spec"><dt>Format</dt><dd>Docuseries. One real person an episode, telling their own story, stayed with long enough that a stranger cares how it turns out.</dd><dt>Entertainment reference</dt><dd><em>Tidying Up with Marie Kondo</em> (the Netflix series where a family sorts through everything they own at a turning point in their life, with a guide beside them)</dd><dt>A company that did it</dt><dd>YETI, <em>YETI Presents</em>. A cooler company built a library of short documentaries about the people who use its gear, each film about one person and one story from their life, and never about the product.</dd><dt>Episode length</dt><dd>10-20 minutes per episode</dd></dl><div class="proj-video-embed video-facade" data-yt="OmrufRLGdAk" role="button" tabindex="0" aria-label="Play video: YETI Presents, A Thousand Casts"><img class="vf-thumb" src="https://i.ytimg.com/vi/OmrufRLGdAk/hqdefault.jpg" alt="" onerror="this.style.display='none'"><span class="vf-play" aria-hidden="true"></span><span class="vf-title">A Thousand Casts &middot; YETI Presents</span></div><div class="stat-strip stat-strip-sm"><div class="stat-cell"><div class="stat-num">1,344,426</div><div class="stat-label">Views On The Top Film</div></div><div class="stat-cell"><div class="stat-num">90</div><div class="stat-label">Films In The Library</div></div><div class="stat-cell"><div class="stat-num">37.6M</div><div class="stat-label">Views Across The Library</div></div></div><p class="prec-note">YETI has published 90 of these films. The one above runs 28 minutes and is the most watched of all of them. Runtime and view count read from YouTube on 24 August 2026. <a href="https://www.youtube.com/watch?v=OmrufRLGdAk" target="_blank" rel="noopener">Watch the film</a></p></div>
+        <div class="apply"><div class="apply-label">How SROA Capital could use it</div><p>One renter an episode, drawn from your properties across 31 states, tells their own story about the move that brought them in. The store manager who already knows the renter is the guide. Your renters have written more than 22,000 five-star reviews, and the series turns those reviews into stories people can watch.</p><p class="apply-names">Possible names: <strong>Make Room</strong>, <strong>The Unit</strong>, <strong>Between Places</strong></p></div>
         <div class="why-block">
           <div class="why-label">Why long-form episodic wins over time</div>
           <div class="why-list">
@@ -483,26 +524,21 @@ body{background:var(--bg);min-height:100vh}
     <div class="idea-card">
       <div class="idea-num">02</div>
       <div class="idea-body">
-        <div style="display:block;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--o);margin-bottom:6px">Short-Form Episodic · The Taco Drama</div>
-        <div class="idea-title">"Move-In Ready"</div>
-        <div class="idea-desc">It is 7:45 on a Friday morning at a Storage Rentals of America property in Florida. Corporate is driving up from West Palm Beach for a nine o'clock walkthrough. The fresh paint on building C's roll-up doors needs two more hours of dry weather, but the summer rain has just started coming in sideways.<br/><br/>A <em>'Taco Drama'</em> is a short scripted series designed to be easy to consume on the go. <em>Move-In Ready</em> is a workplace comedy set at a single self storage property, one of the more than 700 you run. The same small crew keeps the gates, the corridors and the roll-up doors ready for whatever is on the calendar that week. Episodes run a minute or two, shot vertical for phones and widescreen for YouTube and your website.<br/><br/>The cast is a fixed four. Ray has managed the property for years and knows every renter and every renter's dog by name, which is why it takes him twenty minutes to get from the office to building C. Connie is the assistant manager who laminates every checklist, including the checklist of checklists, and rehearses every walkthrough twice before anyone from corporate is in the car. Walt handles maintenance, and he refuses to accept that any gate motor, door spring or golf cart is past saving. He takes every squeak on the property personally. And Deja is the new hire who plans the whole day down to the minute, though Florida rain has never once checked her calendar first.<br/><br/>Every episode, something new is coming to the property: a corporate visit, a grand opening, a photo shoot for the listing pages, an inspection. The crew has until the event happens to get the place ready.<br/><br/><em>Abbott Elementary (the sitcom where a school's staff gets through one small crisis a week and the school resets by Monday)</em> made an audience love a workplace by making them love the people in it. And <em>Superstore (the sitcom set inside one big-box store, where the staff carries the show and the shoppers stay in the background)</em> proved a big building full of ordinary work can be funny for years. The audience gets a quick laugh from the side of self storage nobody ever sees from the keypad, and a crew worth coming back to every week.</div>
-        <div class="why-block">
-          <div class="why-label">Why short-form drama is worth the bet</div>
-          <div class="why-list">
-            <div class="why-item"><span class="why-icon"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span><span><strong>Entertainment is value given first.</strong> Nobody passes around a price list, but people share a ninety-second comedy that made them laugh.</span></div>
-            <div class="why-item"><span class="why-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><span>Micro-drama is already an <strong>$11 billion market in 2025</strong>, headed to about $14 billion by the end of this year (Omdia).</span></div>
-            <div class="why-item"><span class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span>P&amp;G, whose ad budget runs around <strong>$9.2 billion</strong>, has multiple micro-dramas in production right now.</span></div>
-          </div>
-        </div>
+        <div class="scale-label">Short-Form Episodic &middot; Live test, under 2 minutes</div>
+        <div class="idea-title">A short series built on one test an episode</div>
+        <div class="prec"><div class="prec-label">The format, and a company that has already run it</div><dl class="prec-spec"><dt>Format</dt><dd>Challenge series. One claim about the product, one physical test that proves or breaks it, filmed in a single take.</dd><dt>Entertainment reference</dt><dd><em>MythBusters</em> (the series that takes one claim an episode and tests it for real rather than arguing about it)</dd><dt>A company that did it</dt><dd>Volvo Trucks, <em>Live Tests</em>. A truck manufacturer picked one feature at a time and built a real test around it, including Jean-Claude Van Damme doing the splits between two reversing trucks.</dd><dt>Episode length</dt><dd>1-2 minutes per episode</dd></dl><div class="proj-video-embed video-facade" data-yt="M7FIvfx5J10" role="button" tabindex="0" aria-label="Play video: Volvo Trucks, The Epic Split"><img class="vf-thumb" src="https://i.ytimg.com/vi/M7FIvfx5J10/hqdefault.jpg" alt="" onerror="this.style.display='none'"><span class="vf-play" aria-hidden="true"></span><span class="vf-title">The Epic Split &middot; Volvo Trucks</span></div><div class="stat-strip stat-strip-sm"><div class="stat-cell"><div class="stat-num">128,019,768</div><div class="stat-label">Views On The Top Film</div></div><div class="stat-cell"><div class="stat-num">44</div><div class="stat-label">Films In The Series</div></div><div class="stat-cell"><div class="stat-num">1m17s</div><div class="stat-label">Episode Length</div></div></div><p class="prec-note">Volvo sells trucks to fleet buyers, and this is the most watched piece of business-to-business video ever made. The agency behind it reports €126 million in earned media and subscribers rising from 3,500 to 92,000. Runtime and view count read from YouTube on 24 August 2026. <a href="https://www.youtube.com/watch?v=M7FIvfx5J10" target="_blank" rel="noopener">Watch the film</a></p></div>
+        <div class="apply"><div class="apply-label">How SROA Capital could use it</div><p>One unit size an episode gets one honest question, answered by filling the unit for real. One episode shows what actually fits in a ten-by-ten. Another shows what a climate-controlled unit does to a box of photographs over a summer, and a third shows how far a five-by-five gets a student. The manager who rents these units every day runs the test, and every renter wants the answer before they book.</p><p class="apply-names">Possible names: <strong>Will It Fit</strong>, <strong>Ten By Ten</strong>, <strong>The Fit Test</strong></p></div>
+        <div class="why-block"><div class="why-label">Why a short run of real tests works</div><div class="why-list"><div class="why-item"><span class="why-icon"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span><span><strong>Entertainment is value given first.</strong> Nobody passes around a unit-size chart, but people watch someone actually fill a ten-by-ten and find out.</span></div><div class="why-item"><span class="why-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><span><strong>Answer the question they already have.</strong> Every renter is trying to work out what fits before they book, and a test answers it better than a paragraph can.</span></div><div class="why-item"><span class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span><strong>The world resets every episode.</strong> There is another unit size, another season and another question, so the series never runs out of tests to run.</span></div></div></div>
       </div>
     </div>
 
     <div class="idea-card">
       <div class="idea-num">03</div>
       <div class="idea-body">
-        <div style="display:block;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--o);margin-bottom:6px">A Single Film · one-time</div>
-        <div class="idea-title">"The People Running the Platform"</div>
-        <div class="idea-desc">Right now someone lands on sroacapital.com and reads "Vertically Integrated Self Storage Platform." The record behind that line is real, but there are no faces on the page to go with it, so there is no way to see the platform at work.<br/><br/><em>The People Running the Platform</em> is a single film made for the top of sroacapital.com. The film puts the people on camera: the team that finds and buys the properties, the customer care team on a live call, a store manager walking a property, and a crew putting a new building up. You own and operate more than 700 properties, about 34 million rentable square feet in all. You play the supporting role in this film, because the people who run each part are what the film is about.<br/><br/>Someone opens the site to decide whether to invest with you, or an owner opens it to decide whether to sell you their property. Three minutes later, the person who opened the site has met the people who find the buildings, the team that answers the phone when a renter calls, and the crews that put new properties up. The phrase at the top of the page, "Vertically Integrated Self Storage Platform," now has proof visitors can watch.</div>
+        <div class="scale-label">A Single Film &middot; one-time</div>
+        <div class="idea-title">One film that answers one question</div>
+        <div class="prec"><div class="prec-label">The format, and a company that has already run it</div><dl class="prec-spec"><dt>Format</dt><dd>Explainer. One honest question, answered by opening the doors and filming the work.</dd><dt>Entertainment reference</dt><dd><em>How It's Made</em> (the series that follows a single product along the line from raw material to finished item)</dd><dt>A company that did it</dt><dd>McDonald's, <em>Our Food. Your Questions.</em> The company took the questions people were actually asking about its food, including the hostile ones, and answered them by filming inside its own plants.</dd><dt>Episode length</dt><dd>2-4 minutes, one film</dd></dl><div class="proj-video-embed video-facade" data-yt="Ua5PaSqKD6k" role="button" tabindex="0" aria-label="Play video: Pink goop in Chicken McNuggets, McDonald's Canada answers"><img class="vf-thumb" src="https://i.ytimg.com/vi/Ua5PaSqKD6k/hqdefault.jpg" alt="" onerror="this.style.display='none'"><span class="vf-play" aria-hidden="true"></span><span class="vf-title">Pink goop in Chicken McNuggets? &middot; McDonald's</span></div><div class="stat-strip stat-strip-sm"><div class="stat-cell"><div class="stat-num">5.85M</div><div class="stat-label">Views, Top Answer</div></div><div class="stat-cell"><div class="stat-num">3.51M</div><div class="stat-label">Views, The Beef Film</div></div><div class="stat-cell"><div class="stat-num">Own Plants</div><div class="stat-label">Where It Was Filmed</div></div></div><p class="prec-note">The most watched film in the series answers whether Chicken McNuggets are made from pink goop by walking through the plant that makes them. Runtime and counts read from YouTube on 24 August 2026. <a href="https://www.youtube.com/playlist?list=PLB8F066AFA8915464" target="_blank" rel="noopener">Watch the series</a></p></div>
+        <div class="apply"><div class="apply-label">How SROA Capital could use it</div><p>One film for the top of sroacapital.com puts the people on camera. The film shows the team that finds and buys the properties, customer care on a live call, and a manager walking a corridor. The film answers who is actually running the platform your homepage describes.</p><p class="apply-names">Possible names: <strong>The People Running the Platform</strong>, <strong>Who Runs It</strong>, <strong>Inside the Platform</strong></p></div>
         <div class="why-block">
           <div class="why-label">Why one film is worth making on its own</div>
           <div class="why-list">
@@ -531,13 +567,7 @@ body{background:var(--bg);min-height:100vh}
     <p>Legendeering is Talex's proprietary strategy. The core principle is straightforward: lead with value, always. The brand earns trust by giving without expectation, and that trust grows over time because people keep choosing to watch.</p>
     <p>Five directives drive it:</p>
     <ul class="dir-list">
-      <li class="dir-item"><span class="dir-icon"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span><span><strong>Give Without Expectation.</strong> Value delivered without strings. The kind of generosity that builds loyalty money cannot buy.</span></li>
-      <li class="dir-item"><span class="dir-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span><strong>Be Relentlessly Authentic.</strong> Say true things. Show real work. Speak like a human being.</span></li>
-      <li class="dir-item"><span class="dir-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span><strong>It's Not About You. It's About Them.</strong> The audience has to come first. It's all about their wants and needs and making something they will choose to watch.</span></li>
-      <li class="dir-item"><span class="dir-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span><strong>Start With Story, Follow With Facts.</strong> Story gives information shape, context, and emotional weight. Facts alone rarely move people.</span></li>
-      <li class="dir-item"><span class="dir-icon"><svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span><span><strong>Consistency Is Key.</strong> Trust is built in moments, repeated over time.</span></li>
-    </ul>
-    <p>SROA is the expert in buying, building and running self storage at scale. Talex would add the video: a documentary series, a short scripted comedy, and one film for the investor site, each one built on the method above. The three concepts came straight out of it.</p>
+      <li class="dir-item"><span class="dir-icon"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/>Legendeering is not limited to the formats described above. Talex produces video for a variety of clients, across a range of industries in all available formats.</p>
   </div>
 
   <div class="cred-row">
@@ -737,35 +767,26 @@ window.addEventListener("load", function(){
 </script>
 
 
-<script id="tm-live-loader">
+
+<script>
 (function(){
-  var DB = 'https://talex-media-default-rtdb.firebaseio.com', KEY = 'sroa-capital-3d322507', BAKED = '';
-  var wrap = document.querySelector('#wrap');
-  if(!wrap || !window.fetch) return;
-  fetch(DB + '/published/' + KEY + '.json', {cache: 'no-store'})
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(p){
-      if(!p || !p.html || !p.version) return;
-      if(p.version === BAKED) return;   // already baked into this file
-      var tmp = document.createElement('div');
-      tmp.innerHTML = p.html;
-      tmp.querySelectorAll('[contenteditable]').forEach(function(el){
-        el.removeAttribute('contenteditable');
-        el.removeAttribute('data-tmedit');
-        el.classList.remove('tm-edit');
-        if(!el.getAttribute('class')) el.removeAttribute('class');
-      });
-      tmp.querySelectorAll('.tm-chip').forEach(function(el){ el.remove(); });
-      tmp.querySelectorAll('.tm-idea').forEach(function(el){
-        el.classList.remove('tm-idea');
-        if(!el.getAttribute('class')) el.removeAttribute('class');
-      });
-      var bar = tmp.querySelector('#tm-bar'); if(bar) bar.remove();
-      wrap.innerHTML = tmp.innerHTML;
-    })
-    .catch(function(){});
+  function load(el){
+    if(el.getAttribute("data-loaded")) return;
+    var id = el.getAttribute("data-yt");
+    var f = document.createElement("iframe");
+    f.setAttribute("src","https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0");
+    f.setAttribute("title","Video player");
+    f.setAttribute("allow","accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+    f.setAttribute("allowfullscreen","");
+    el.innerHTML = ""; el.appendChild(f); el.setAttribute("data-loaded","1");
+  }
+  document.querySelectorAll(".video-facade").forEach(function(el){
+    el.addEventListener("click", function(){ load(el); });
+    el.addEventListener("keydown", function(ev){
+      if(ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); load(el); }
+    });
+  });
 })();
 </script>
-
 </body>
 </html>
